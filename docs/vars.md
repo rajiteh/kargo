@@ -67,11 +67,14 @@ following default cluster paramters:
   OpenStack (default is unset)
 * *kube_hostpath_dynamic_provisioner* - Required for use of PetSets type in
   Kubernetes
-* *authorization_mode* - A list of authorization modes that the apiserver should be configured. 
+* *authorization_mode* - A list of [authorization modes](
+https://kubernetes.io/docs/admin/authorization/#using-flags-for-your-authorization-module)
+ that the cluster should be configured for. Defaults to `['AlwaysAllow']`. 
+ Note: Only `AlwaysAllow`, `AlwaysDeny` and `RBAC` are tested.   
 * *rotate_kubernetes_certs* - Set this to true to regenerate kubernetes node and master certificates.
 Useful if the authorization mode was changed and certificate format
 needs to be updated. This will not regenerate the root CA. *(!!Warning!!: Will overwrite old certs.)*
- 
+
  
 Note, if cloud providers have any use of the ``10.233.0.0/16``, like instances'
 private addresses, make sure to pick another values for ``kube_service_addresses``
