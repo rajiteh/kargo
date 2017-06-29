@@ -60,7 +60,7 @@
   when: kubesystem|failed and inventory_hostname == groups['kube-master'][0]
   tags: apps
 
-- name: Lay Down kubelet PSP Resources (RBAC)
+- name: Write kube-controller-manager manifest
   template:
     src: "{{item.file}}"
     dest: "{{kube_config_dir}}/{{item.file}}"
