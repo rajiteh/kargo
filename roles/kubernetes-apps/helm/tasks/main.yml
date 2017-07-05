@@ -33,7 +33,7 @@
   when: rbac_enabled
 
 - name: Helm | Install/upgrade helm
-  command: "{{ bin_dir }}/helm init --upgrade --tiller-image={{ tiller_image_repo }}:{{ tiller_image_tag }} {{ '--service-account=tiller' if rbac_enabled else '' }}"
+  command: "{{ bin_dir }}/helm init --upgrade --tiller-image={{ tiller_image_repo }}:{{ tiller_image_tag }} --skip-refresh {{ '--service-account=tiller' if rbac_enabled else '' }}"
   when: helm_container.changed
 
 - name: Helm | Set up bash completion
