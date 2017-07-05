@@ -60,7 +60,7 @@
   when: kubesystem|failed and inventory_hostname == groups['kube-master'][0]
   tags: apps
 
-- name: Write kube-controller-manager manifest
+- name: Transfer kubelet PSP manifests
   template:
     src: "{{item.file}}"
     dest: "{{kube_config_dir}}/{{item.file}}"
@@ -72,7 +72,7 @@
   when: dns_mode != 'none' and inventory_hostname == groups['kube-master'][0] and rbac_enabled and psp_enabled
   tags: apps
 
-- name: Apply kubelet PSP Resources (RBAC)
+- name: Apply kubelet PSP resources
   kube:
     name: "{{item.item.name}}"
     namespace: "{{ system_namespace }}"

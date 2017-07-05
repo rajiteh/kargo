@@ -83,6 +83,14 @@
     - /opt/cni
     - /etc/dhcp/dhclient.d/zdnsupdate.sh
     - /etc/dhcp/dhclient-exit-hooks.d/zdnsupdate
+    - /run/flannel
+    - /etc/flannel
+    - /run/kubernetes
+    - /usr/local/share/ca-certificates/kube-ca.crt
+    - /usr/local/share/ca-certificates/etcd-ca.crt
+    - /etc/ssl/certs/kube-ca.pem
+    - /etc/ssl/certs/etcd-ca.pem
+    - /var/log/pods/
     - "{{ bin_dir }}/kubelet"
     - "{{ bin_dir }}/etcd-scripts"
     - "{{ bin_dir }}/etcd"
