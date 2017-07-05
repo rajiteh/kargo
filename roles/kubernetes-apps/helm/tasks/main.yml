@@ -35,6 +35,7 @@
 - name: Helm | Install/upgrade helm
   command: "{{ bin_dir }}/helm init --upgrade --tiller-image={{ tiller_image_repo }}:{{ tiller_image_tag }} {{ '--service-account=tiller' if rbac_enabled else '' }}"
   when: helm_container.changed
+  environment: "{{ proxy_env }}"
 
 - name: Helm | Patch tiller deployment for RBAC
   command: kubectl patch deployment tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}' -n {{ system_namespace }}
