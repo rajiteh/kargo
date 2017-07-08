@@ -78,6 +78,11 @@ spec:
       name: cloudconfig
       readOnly: true
 {% endif %}
+    env:
+{% for key, value in proxy_env.items() %}
+    - name: {{ key }}
+      value: "{{ value }}"
+{% endfor %}
   volumes:
   - name: ssl-certs-host
     hostPath:
